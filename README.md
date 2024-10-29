@@ -1,4 +1,4 @@
-[![Build and Test](https://github.com/DogeProtocol/hybrid-pqc/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/DogeProtocol/hybrid-pqc/actions/workflows/build-and-test.yml)
+[![Build and Test](https://github.com/quantumcoinproject/hybrid-pqc/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/quantumcoinproject/hybrid-pqc/actions/workflows/build-and-test.yml)
 
 # Hybrid Post Quantum Cryptography
 While lattice based post-quantum cryptography schemes such as SPHINCS+ and Dilithium have been standardized, they haven’t 
@@ -21,7 +21,7 @@ Some disadvantages of the hybrid model are increased complexity, increased risk 
 storage, and bandwidth requirements. However, the security benefits of the hybrid model outweigh these disadvantages.
 
 ## Hybrid Scheme
-In this hybrid scheme, Dilithium, SPHINCS+ and ed25519 are used in a combiner mode. More details on the comment at https://github.com/DogeProtocol/hybrid-pqc/blob/main/hybrid-dilithium-sphincs/hybrid.c
+In this hybrid scheme, Dilithium, SPHINCS+ and ed25519 are used in a combiner mode. More details on the comment at https://github.com/quantumcoinproject/hybrid-pqc/blob/main/hybrid-dilithium-sphincs/hybrid.c
 
 Since SPHINCS+ signatures are large, the do not fit requirements of many applications. Because of this reason, this hybrid scheme supports two modes of signing:
 
@@ -56,7 +56,7 @@ The random implementation is based on (https://github.com/dsprenkels/randombytes
 
 2. Get the source:
 
-		git clone https://github.com/dogeprotocol/hybrid-pqc.git
+		git clone https://github.com/quantumcoinproject/hybrid-pqc.git
 		cd hybrid-pqc
 
 	and build:
