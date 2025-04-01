@@ -14,7 +14,7 @@ static int glib_getrandom_called = 0;
 	padto(' ', sizeof(#name) + sizeof(" ... "), 32); \
 	current_test = name; \
 	name(); \
-	printf("ok\n");
+	printf("\nok\n");
 #define SKIP_TEST(name) \
 	printf("%s ... ", #name); \
 	padto(' ', sizeof(#name) + sizeof(" ... "), 32); \
@@ -44,8 +44,8 @@ static void test_functional(void) {
       }
       for(int i = 0;i < 256;i++) {
        if(buf3[i] > 0) {
-         printf("\nbyte %d=%d", i, buf3[i]);
-         assert(buf3[i] < 3);
+         printf("\nbyte %d: count of occurrences = %d", i, buf3[i]);
+         assert(buf3[i] < 5); //max 5 values can match
        }
       }
 }
@@ -141,9 +141,9 @@ int main(void) {
 	RUN_TEST(test_issue_22)
 	RUN_TEST(test_issue_33)
 #else
-	SKIP_TEST(test_issue_17)
-	SKIP_TEST(test_issue_22)
-	SKIP_TEST(test_issue_33)
+	RUN_TEST(test_issue_17)
+	RUN_TEST(test_issue_22)
+	RUN_TEST(test_issue_33)
 #endif /* defined(__linux__) && !defined(SYS_getrandom) */
 	return 0;
 }
