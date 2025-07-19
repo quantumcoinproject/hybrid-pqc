@@ -49,6 +49,10 @@ int dp_sign_verify(unsigned char* m, size_t mlen, const unsigned char *sm, size_
 EMSCRIPTEN_KEEPALIVE
 int dp_sign_seedexpander(const unsigned char* seed, unsigned char* expandedSeed) {
 	return crypto_sign_dilithium_ed25519_sphincs_keypair_seed_expander(seed, expandedSeed);
+
+EMSCRIPTEN_KEEPALIVE
+	int dp_sign_seedexpander_v2(const unsigned char* seed, unsigned char* expandedSeed) {
+	return crypto_sign_dilithium_ed25519_sphincs_keypair_seed_expander_v2(seed, expandedSeed);
 }
 
 EMSCRIPTEN_KEEPALIVE

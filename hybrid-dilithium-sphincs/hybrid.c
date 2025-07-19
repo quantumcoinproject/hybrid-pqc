@@ -171,6 +171,25 @@ int crypto_sign_dilithium_ed25519_sphincs_keypair_seed_expander(const unsigned c
 	return 0;
 }
 
+int crypto_sign_dilithium_ed25519_sphincs_keypair_seed_expander_v2(const unsigned char* seed, unsigned char* expandedSeed) {
+	uint8_t seedTemp[81] = { 0 };
+	const uint8_t INTERNAL_DOMAIN_SEPARATOR = 200; //internal domain separator
+
+	//Copy first 80 bytes of input-seed to temp-seed
+	for (int i = 0; i < 80; i++) {
+		seedTemp[i] = seed[i];
+	}
+	seedTemp[80] = INTERNAL_DOMAIN_SEPARATOR; //set the domain separator
+
+	//Expand seed
+	int ret = seedexpander_wrapper(seedTemp, 81, expandedSeed, 160);
+	if (ret != 0) {
+		return ret;
+	}
+
+	return 0;
+}
+
 int crypto_sign_dilithium_ed25519_sphincs_keypair_seed(unsigned char* pk, unsigned char* sk, unsigned char* seed) {
 	if (pk == NULL || sk == NULL || seed == NULL) {
 		return -1;
