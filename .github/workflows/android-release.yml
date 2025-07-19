@@ -28,7 +28,7 @@ jobs:
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4        
         with:
-          name: hybridpqc-android-library-release
+          name: hybridpqc-android-library-release-${{ matrix.abi }}
           path: ${{ github.workspace }}/${{ matrix.abi }}/android-${{ matrix.abi }}*.*
   Release:
     name: Release APK
@@ -47,7 +47,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: "hybridpqc-android-library-release/*.*"
+          artifacts: "hybridpqc-android-library-release-${{ matrix.abi }}/*.*"
           name: Release ${{ steps.version-string.outputs.VERSION_STR }}
           prerelease: ${{ contains(github.ref, '-alpha') || contains(github.ref, '-beta') }}
           tag: ${{ steps.version-string.outputs.VERSION_STR }}
