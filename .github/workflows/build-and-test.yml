@@ -71,10 +71,3 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest --build-config ${{ matrix.build_type }}
 
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v4
-      with:
-        name: hybridpqc
-        path: |
-              ${{ github.workspace }}/build/lib/*.*
-              ${{ github.workspace }}/build/bin/Release/*.*
