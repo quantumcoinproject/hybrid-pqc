@@ -69,7 +69,7 @@ jobs:
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v4
       with:
-        name: hybridpqc-${{ matrix.os }}
+        name: hybridpqc-${{ matrix.os }}-${{ matrix.c_compiler }}
         path: |
               ${{ github.workspace }}/build/lib/*.*
               ${{ github.workspace }}/build/bin/Release/*.*
@@ -79,4 +79,4 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
-        artifacts: "hybridpqc-${{ matrix.os }}/*.*"
+        artifacts: "hybridpqc-${{ matrix.os }}-${{ matrix.c_compiler }}/*.*"
