@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v4
         
         with:
-          name: hybridpqc
+          name: hybridpqc-${{ matrix.platform }}
           path: |
                 ${{ github.workspace }}/build/lib/*.*
                 
@@ -34,4 +34,4 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: "build/lib/*.*"
+          artifacts: "hybridpqc-${{ matrix.platform }}/*.*"
